@@ -1,0 +1,207 @@
+---
+// Contact.astro — Contact section
+import ContactForm from './react/ContactForm.tsx';
+---
+
+<section id="contact" class="contact-section">
+  <div class="contact-container">
+
+    <!-- Heading -->
+    <div class="contact-heading reveal">
+      <h2 class="section-heading" style="text-align:center;">
+        <span class="i18n-es">Contacto</span>
+        <span class="i18n-en">Contact</span>
+      </h2>
+      <div class="section-underline" style="margin:0 auto 0.75rem;"></div>
+      <p class="contact-subtitle">
+        <span class="i18n-es">¿Tienes algo en mente? ¡Hablemos!</span>
+        <span class="i18n-en">Have something in mind? Let's talk!</span>
+      </p>
+    </div>
+
+    <!-- Content grid -->
+    <div class="contact-grid">
+
+      <!-- Left: info -->
+      <div class="contact-info reveal reveal-delay-1">
+        <h3 class="contact-info-title">
+          <span class="i18n-es">¡Estoy disponible!</span>
+          <span class="i18n-en">I'm available!</span>
+        </h3>
+
+        <p class="contact-info-desc">
+          <span class="i18n-es">
+            Ya sea para una colaboración, una oportunidad laboral o simplemente
+            para charlar sobre tecnología e inteligencia artificial, no dudes
+            en escribirme.
+          </span>
+          <span class="i18n-en">
+            Whether it's for a collaboration, a job opportunity, or just to
+            chat about technology and AI, feel free to reach out.
+          </span>
+        </p>
+
+        <!-- Direct contact links -->
+        <div class="contact-channels">
+          <a
+            href="mailto:cortesdiaz905@gmail.com"
+            class="contact-channel-link"
+            id="contact-email-link"
+          >
+            <div class="channel-icon">📧</div>
+            <div class="channel-text">
+              <span class="channel-label">Email</span>
+              <span class="channel-value">cortesdiaz905@gmail.com</span>
+            </div>
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/alejandro-cortes-diaz-2b7a75271/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-channel-link"
+            id="contact-linkedin-link"
+          >
+            <div class="channel-icon">💼</div>
+            <div class="channel-text">
+              <span class="channel-label">LinkedIn</span>
+              <span class="channel-value">Alejandro Cortés Díaz</span>
+            </div>
+          </a>
+
+          <a
+            href="https://github.com/Cortes-Hash"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-channel-link"
+            id="contact-github-link"
+          >
+            <div class="channel-icon">🐙</div>
+            <div class="channel-text">
+              <span class="channel-label">GitHub</span>
+              <span class="channel-value">Cortes-Hash</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Form -->
+      <div class="contact-form-wrap reveal reveal-delay-2">
+        <div class="card" style="padding:2rem;">
+          <ContactForm client:visible />
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-section {
+    padding: 5rem 0;
+    background: var(--bg-primary);
+  }
+
+  .contact-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .contact-heading {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .contact-subtitle {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .contact-info-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 1rem;
+  }
+
+  .contact-info-desc {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.75;
+    margin: 0 0 1.75rem;
+  }
+
+  .contact-channels {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .contact-channel-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .contact-channel-link:hover {
+    border-color: var(--accent);
+    background: var(--bg-card-hover, var(--bg-card));
+    transform: translateX(6px);
+    box-shadow: 0 4px 16px rgba(0,212,255,0.12);
+  }
+
+  .channel-icon {
+    font-size: 1.4rem;
+    width: 44px;
+    height: 44px;
+    border-radius: 0.5rem;
+    background: var(--accent-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .channel-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .channel-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+  }
+
+  .channel-value {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    word-break: break-all;
+  }
+
+  @media (max-width: 900px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+</style>

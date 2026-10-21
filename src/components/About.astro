@@ -1,0 +1,170 @@
+---
+// About.astro — About me section
+---
+
+<section id="about" class="about-section">
+  <div class="about-container">
+
+    <!-- Section heading (right-aligned like reference) -->
+    <div class="about-heading-wrap reveal">
+      <h2 class="section-heading">
+        <span class="i18n-es">Sobre mí</span>
+        <span class="i18n-en">About Me</span>
+      </h2>
+      <div class="section-underline" style="margin-left:auto;"></div>
+    </div>
+
+    <!-- Text content -->
+    <div class="about-text reveal reveal-delay-1">
+      <p>
+        <span class="i18n-es">
+          Soy un desarrollador especializado en <strong>Backend</strong> con Java y
+          Spring Boot, aunque mi dominio abarca ambos mundos del desarrollo. Mi pasión
+          por integrar <strong>Inteligencia Artificial</strong> en proyectos reales me
+          diferencia: desde mi TFG —que obtuvo la <strong>nota máxima</strong>— con
+          la API Gemini AI integrada, hasta automatizaciones corporativas con
+          Claude AI Skills.
+        </span>
+        <span class="i18n-en">
+          I'm a developer specialized in <strong>Backend</strong> with Java and
+          Spring Boot, though my skills span both worlds of development. My passion
+          for integrating <strong>Artificial Intelligence</strong> into real projects
+          sets me apart: from my Final Degree Project —which received the
+          <strong>highest grade</strong>— with the Gemini AI API, to corporate
+          automations with Claude AI Skills.
+        </span>
+      </p>
+
+      <p>
+        <span class="i18n-es">
+          Mi Trabajo de Fin de Grado integra <strong>Gemini AI</strong> para realizar
+          recomendaciones inteligentes basadas en los datos descriptivos desde la base
+          de datos, empleando un lenguaje carismático, variado, y que incita a la compra
+          sea cual sea la preferencia del cliente. Implementé <strong>Stripe</strong>
+          como pasarela de pago segura, <strong>Spring Security</strong> para
+          autenticación y autorización robustas, y <strong>Thymeleaf</strong> para el
+          renderizado del servidor. Un proyecto full-stack de principio a fin que
+          demostró mi capacidad para construir aplicaciones complejas y seguras.
+        </span>
+        <span class="i18n-en">
+          My Final Degree Project integrates <strong>Gemini AI</strong> to make
+          intelligent recommendations based on descriptive data from the database,
+          using charismatic, varied language that encourages purchases regardless of
+          the customer's preference. I implemented <strong>Stripe</strong> as a secure
+          payment gateway, <strong>Spring Security</strong> for robust authentication
+          and authorization, and <strong>Thymeleaf</strong> for server-side rendering.
+          A full-stack project from start to finish demonstrating my ability to build
+          complex, secure applications.
+        </span>
+      </p>
+
+      <p>
+        <span class="i18n-es">
+          En entornos corporativos, he desarrollado sistemas de automatización con
+          <strong>Claude AI Skills</strong> para la generación de contenidos
+          corporativos. Asimismo, he diseñado pipelines de datos (ETL) utilizando
+          scripts de Python para extraer, limpiar y unificar información masiva y
+          desestructurada. A partir de estos datos consolidados y aplicando fórmulas
+          avanzadas de agrupación, desarrollé <strong>dashboards interactivos</strong>
+          y dinámicos. Estas herramientas permiten cruzar métricas clave en tiempo real
+          y transformar datos crudos en visualizaciones estratégicas para el cliente.
+          Siempre busco la combinación perfecta entre tecnología, eficiencia y
+          experiencia de usuario.
+        </span>
+        <span class="i18n-en">
+          In corporate environments, I've developed automation systems with
+          <strong>Claude AI Skills</strong> for corporate content generation.
+          I have also designed ETL data pipelines using Python scripts to extract,
+          clean, and unify massive unstructured information. From this consolidated
+          data and applying advanced grouping formulas, I built <strong>interactive
+          and dynamic dashboards</strong>. These tools allow cross-referencing key
+          metrics in real time and transforming raw data into strategic visualizations
+          for the client. I always seek the perfect blend of technology, efficiency,
+          and user experience.
+        </span>
+      </p>
+    </div>
+
+    <!-- Stats grid -->
+    <div class="stats-grid reveal reveal-delay-2">
+      <div class="stat-card" id="stat-experience">
+        <span class="stat-number">1+</span>
+        <span class="stat-label">
+          <span class="i18n-es">Años de experiencia</span>
+          <span class="i18n-en">Years of experience</span>
+        </span>
+      </div>
+
+      <div class="stat-card" id="stat-projects">
+        <span class="stat-number">5+</span>
+        <span class="stat-label">
+          <span class="i18n-es">Proyectos completados</span>
+          <span class="i18n-en">Completed projects</span>
+        </span>
+      </div>
+
+      <div class="stat-card" id="stat-technologies">
+        <span class="stat-number">15+</span>
+        <span class="stat-label">
+          <span class="i18n-es">Tecnologías dominadas</span>
+          <span class="i18n-en">Technologies mastered</span>
+        </span>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator" aria-hidden="true">
+      <div class="scroll-dot"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-section {
+    position: relative;
+    padding: 5rem 0;
+    background: var(--bg-secondary);
+  }
+
+  .about-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .about-heading-wrap {
+    text-align: right;
+    margin-bottom: 2.5rem;
+  }
+
+  .about-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 3rem;
+  }
+
+  .about-text p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.85;
+    margin: 0;
+  }
+
+  .about-text strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 640px) {
+    .stats-grid { grid-template-columns: 1fr; }
+    .about-heading-wrap { text-align: left; }
+    .section-underline { margin-left: 0 !important; }
+  }
+</style>

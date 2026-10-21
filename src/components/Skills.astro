@@ -1,0 +1,236 @@
+---
+// Skills.astro — Skills & Technologies section
+
+// Skill data with devicon classes
+const frontend = [
+  { name: 'HTML5',      icon: 'devicon-html5-plain colored' },
+  { name: 'CSS3',       icon: 'devicon-css3-plain colored' },
+  { name: 'JavaScript', icon: 'devicon-javascript-plain colored' },
+  { name: 'React',      icon: 'devicon-react-original colored' },
+  { name: 'Astro',      icon: 'devicon-astro-plain colored' },
+];
+
+const backend = [
+  { name: 'Java',        icon: 'devicon-java-plain colored' },
+  { name: 'Spring Boot', icon: 'devicon-spring-plain colored' },
+  { name: '.NET',        icon: 'devicon-dot-net-plain colored' },
+  { name: 'Python',      icon: 'devicon-python-plain colored' },
+];
+
+const databases = [
+  { name: 'MySQL',      icon: 'devicon-mysql-plain colored' },
+  { name: 'PostgreSQL', icon: 'devicon-postgresql-plain colored' },
+  { name: 'Oracle DB',  icon: 'devicon-oracle-plain colored' },
+];
+
+const tools = [
+  { name: 'Git',     icon: 'devicon-git-plain colored' },
+  { name: 'GitHub',  icon: 'devicon-github-original colored' },
+  { name: 'Figma',   icon: 'devicon-figma-plain colored' },
+  { name: 'Power BI', img: '/images/powerBi.png'},
+  { name: 'Agile',   img: '/images/agile.svg'},
+  { name: 'Claude Skills', img: '/images/claude.png'},
+];
+---
+
+<section id="skills" class="skills-section">
+  <div class="skills-container">
+
+    <!-- Heading -->
+    <div class="skills-heading reveal">
+      <h2 class="section-heading" style="text-align:center;">
+        <span class="i18n-es">Habilidades</span>
+        <span class="i18n-en">Skills</span>
+      </h2>
+      <div class="section-underline" style="margin:0 auto 0.75rem;"></div>
+      <p class="skills-subtitle">
+        <span class="i18n-es">Tecnologías y herramientas con las que trabajo regularmente</span>
+        <span class="i18n-en">Technologies and tools I work with regularly</span>
+      </p>
+    </div>
+
+    <!-- Categories grid -->
+    <div class="categories-grid">
+
+      <!-- Frontend -->
+      <div class="skill-category-box reveal reveal-delay-1" id="skills-frontend">
+        <p class="skill-category-label">
+          <span class="i18n-es">Frontend</span>
+          <span class="i18n-en">Frontend</span>
+        </p>
+        <div class="skills-icons-grid">
+          {frontend.map(skill => (
+            <div class="skill-item" title={skill.name}>
+              <i class={`${skill.icon} skill-icon`} aria-hidden="true"></i>
+              <span>{skill.name}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Backend -->
+      <div class="skill-category-box reveal reveal-delay-2" id="skills-backend">
+        <p class="skill-category-label">
+          <span class="i18n-es">Backend</span>
+          <span class="i18n-en">Backend</span>
+        </p>
+        <div class="skills-icons-grid">
+          {backend.map(skill => (
+            <div class="skill-item" title={skill.name}>
+              <i class={`${skill.icon} skill-icon`} aria-hidden="true"></i>
+              <span>{skill.name}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Databases -->
+      <div class="skill-category-box reveal reveal-delay-3" id="skills-databases">
+        <p class="skill-category-label">
+          <span class="i18n-es">Bases de Datos</span>
+          <span class="i18n-en">Databases</span>
+        </p>
+        <div class="skills-icons-grid">
+          {databases.map(skill => (
+            <div class="skill-item" title={skill.name}>
+              <i class={`${skill.icon} skill-icon`} aria-hidden="true"></i>
+              <span>{skill.name}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Tools -->
+      <div class="skill-category-box reveal reveal-delay-4" id="skills-tools">
+        <p class="skill-category-label">
+          <span class="i18n-es">Herramientas</span>
+          <span class="i18n-en">Tools</span>
+        </p>
+        <div class="skills-icons-grid">
+          {tools.map(skill => (
+            <div class="skill-item" title={skill.name}>
+              {skill.icon
+                ? <i class={`${skill.icon} skill-icon`} aria-hidden="true"></i>
+                : skill.svg
+                  ? <span class="skill-svg" aria-hidden="true" set:html={skill.svg} />
+                  : skill.img
+                    ? <img src={skill.img} alt={skill.name} class="skill-img" loading="lazy" />
+                    : <span class="skill-emoji" aria-hidden="true">{skill.emoji}</span>
+              }
+              <span>{skill.name}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator" aria-hidden="true">
+      <div class="scroll-dot"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .skills-section {
+    position: relative;
+    padding: 5rem 0;
+    background: var(--bg-secondary);
+  }
+
+  .skills-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .skills-heading {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .skills-subtitle {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .skills-icons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .skill-icon {
+    font-size: 2.2rem !important;
+    transition: filter 0.3s, transform 0.3s;
+    display: block;
+  }
+
+  .skill-emoji {
+    font-size: 2rem;
+    display: block;
+    text-align: center;
+  }
+
+  .skill-item:hover .skill-icon {
+    filter: drop-shadow(0 0 8px var(--accent));
+    transform: scale(1.1);
+  }
+
+  .skill-item:hover .skill-emoji,
+  .skill-item:hover .skill-svg svg {
+    filter: drop-shadow(0 0 8px var(--accent));
+    transform: scale(1.1);
+    transition: filter 0.3s, transform 0.3s;
+  }
+
+  .skill-svg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+  }
+
+  .skill-svg svg {
+    width: 36px;
+    height: 36px;
+    display: block;
+    color: var(--text-secondary);
+    transition: filter 0.3s, transform 0.3s;
+  }
+
+  .skill-img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    transition: filter 0.3s, transform 0.3s;
+  }
+
+  .skill-item:hover .skill-img {
+    filter: drop-shadow(0 0 8px var(--accent));
+    transform: scale(1.1);
+  }
+
+  /* GitHub icon in light mode needs color fix */
+  :global(html.light) .devicon-github-original {
+    filter: invert(1);
+  }
+
+  @media (max-width: 768px) {
+    .categories-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .skills-icons-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

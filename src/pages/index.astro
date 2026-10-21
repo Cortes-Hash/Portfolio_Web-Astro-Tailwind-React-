@@ -1,0 +1,28 @@
+---
+// index.astro — Main portfolio page
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Projects from '../components/Projects.astro';
+import Skills from '../components/Skills.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Alejandro Cortés — Desarrollador Backend | Backend Developer"
+  description="Portfolio profesional de Alejandro Cortés, desarrollador Backend especializado en Java, Spring Boot e integración de IA con Gemini y Claude AI. Professional portfolio of Backend Developer Alejandro Cortés."
+>
+  <Navbar />
+
+  <main id="main-content">
+    <Hero />
+    <About />
+    <Projects />
+    <Skills />
+    <Contact />
+  </main>
+
+  <Footer />
+</Layout>

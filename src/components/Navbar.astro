@@ -1,0 +1,236 @@
+---
+import ThemeToggle from './react/ThemeToggle.tsx';
+import LangToggle from './react/LangToggle.tsx';
+---
+
+<header id="navbar">
+  <div class="nav-inner">
+
+    <!-- LOGO -->
+    <a href="#hero" class="navbar-logo" aria-label="Inicio">
+      <span class="logo-lt">&lt;</span>
+      <span class="logo-name">AlejandroC</span>
+      <span class="logo-lt">&nbsp;/&gt;</span>
+    </a>
+
+    <!-- DESKTOP NAV -->
+    <nav class="desktop-nav" role="navigation" aria-label="Navegación principal">
+      <a href="#about"    class="nav-link" data-target="about">
+        <span class="i18n-es">Sobre mí</span>
+        <span class="i18n-en">About Me</span>
+      </a>
+      <a href="#projects" class="nav-link" data-target="projects">
+        <span class="i18n-es">Proyectos</span>
+        <span class="i18n-en">Projects</span>
+      </a>
+      <a href="#skills"   class="nav-link" data-target="skills">
+        <span class="i18n-es">Habilidades</span>
+        <span class="i18n-en">Skills</span>
+      </a>
+      <a href="#contact"  class="nav-link" data-target="contact">
+        <span class="i18n-es">Contacto</span>
+        <span class="i18n-en">Contact</span>
+      </a>
+    </nav>
+
+    <!-- CONTROLS -->
+    <div class="nav-controls">
+      <LangToggle client:load />
+      <ThemeToggle client:load />
+    </div>
+
+    <!-- HAMBURGER (mobile) -->
+    <button
+      id="hamburger-btn"
+      class="hamburger"
+      aria-label="Abrir menú"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <!-- MOBILE NAV -->
+  <nav id="mobile-nav" class="mobile-nav" role="navigation" aria-label="Navegación móvil">
+    <a href="#about"    class="mobile-nav-link" data-mobile-link>
+      <span class="i18n-es">Sobre mí</span>
+      <span class="i18n-en">About Me</span>
+    </a>
+    <a href="#projects" class="mobile-nav-link" data-mobile-link>
+      <span class="i18n-es">Proyectos</span>
+      <span class="i18n-en">Projects</span>
+    </a>
+    <a href="#skills"   class="mobile-nav-link" data-mobile-link>
+      <span class="i18n-es">Habilidades</span>
+      <span class="i18n-en">Skills</span>
+    </a>
+    <a href="#contact"  class="mobile-nav-link" data-mobile-link>
+      <span class="i18n-es">Contacto</span>
+      <span class="i18n-en">Contact</span>
+    </a>
+    <!-- Toggles in mobile menu too -->
+    <div class="mobile-toggles">
+      <LangToggle client:load />
+      <ThemeToggle client:load />
+    </div>
+  </nav>
+</header>
+
+<script>
+  // --- Navbar scroll shrink ---
+  (function initNavbarScroll() {
+    try {
+      const navbar = document.getElementById('navbar');
+      if (!navbar) return;
+
+      let ticking = false;
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            navbar.classList.toggle('scrolled', window.scrollY > 60);
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+    } catch (err) {
+      console.warn('[Navbar] Scroll effect unavailable:', err);
+    }
+  })();
+
+  // --- Hamburger / mobile menu ---
+  (function initHamburger() {
+    try {
+      const btn  = document.getElementById('hamburger-btn');
+      const menu = document.getElementById('mobile-nav');
+      if (!btn || !menu) return;
+
+      const toggle = (open: boolean) => {
+        btn.classList.toggle('is-open', open);
+        menu.classList.toggle('is-open', open);
+        btn.setAttribute('aria-expanded', String(open));
+        document.body.style.overflow = open ? 'hidden' : '';
+      };
+
+      btn.addEventListener('click', () => {
+        const isOpen = menu.classList.contains('is-open');
+        toggle(!isOpen);
+      });
+
+      // Close on link click
+      document.querySelectorAll('[data-mobile-link]').forEach(link => {
+        link.addEventListener('click', () => toggle(false));
+      });
+
+      // Close on Escape
+      document.addEventListener('keydown', (e: KeyboardEvent) => {
+        if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+          toggle(false);
+        }
+      });
+
+      // Close on outside click
+      document.addEventListener('click', (e: MouseEvent) => {
+        if (menu.classList.contains('is-open') && !navbar?.contains(e.target as Node)) {
+          toggle(false);
+        }
+      });
+    } catch (err) {
+      console.warn('[Navbar] Hamburger menu unavailable:', err);
+    }
+  })();
+</script>
+
+<style>
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 999;
+    transition: background 0.4s ease, backdrop-filter 0.4s ease, padding 0.3s ease, border-bottom 0.3s ease;
+  }
+
+  header.scrolled {
+    background: var(--nav-bg);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    transition: padding 0.3s ease;
+  }
+
+  header.scrolled .nav-inner {
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+  }
+
+  .navbar-logo {
+    font-family: 'Inter', monospace;
+    font-size: 1.15rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: color 0.3s;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .navbar-logo:hover .logo-name { color: var(--accent); }
+  .logo-lt { color: var(--accent); }
+  .logo-name { transition: color 0.3s; }
+
+  .desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  .mobile-nav {
+    display: none;
+    padding: 0.5rem 1.5rem 1rem;
+    background: var(--bg-card);
+    border-top: 1px solid var(--border);
+    flex-direction: column;
+  }
+
+  .mobile-nav.is-open {
+    display: flex;
+  }
+
+  .mobile-toggles {
+    display: flex;
+    gap: 0.5rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border);
+    margin-top: 0.25rem;
+  }
+
+  @media (max-width: 768px) {
+    .desktop-nav { display: none; }
+    .hamburger { display: flex; }
+    .nav-controls { display: none; }
+  }
+
+  @media (min-width: 769px) {
+    .mobile-nav { display: none !important; }
+    .hamburger { display: none; }
+  }
+</style>

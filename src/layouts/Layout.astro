@@ -1,0 +1,169 @@
+---
+import '../styles/global.css';
+
+// Layout.astro — Main layout for the portfolio
+interface Props {
+  title: string;
+  description: string;
+  lang?: string;
+}
+
+const {
+  title = 'Alejandro Cortés — Desarrollador Backend',
+  description = 'Portfolio profesional de Alejandro Cortés, desarrollador Backend especializado en Java, Spring Boot e integración de IA.',
+  lang = 'es',
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang={lang} data-lang={lang} class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="author" content="Alejandro Cortés" />
+    <meta name="keywords" content="Alejandro Cortés, desarrollador backend, Java, Spring Boot, Gemini AI, portfolio, Claude AI, desarrollador web" />
+
+    <!-- Open Graph -->
+    <meta property="og:title"       content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type"        content="website" />
+    <meta property="og:site_name"   content="Alejandro Cortés Portfolio" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:title"       content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Devicons (tech skill icons) -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+    />
+
+    <!--
+      CRITICAL: Theme & Lang initialization BEFORE paint to prevent flash
+      Reads from localStorage and applies class/attr to <html> synchronously.
+    -->
+    <script is:inline>
+      (function () {
+        try {
+          var theme = localStorage.getItem('portfolio-theme');
+          if (!theme) {
+            theme = window.matchMedia('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'light';
+          }
+          var html = document.documentElement;
+          if (theme === 'light') {
+            html.classList.remove('dark');
+            html.classList.add('light');
+          } else {
+            html.classList.add('dark');
+            html.classList.remove('light');
+          }
+        } catch (e) {
+          // Fallback: keep dark mode (default)
+          document.documentElement.classList.add('dark');
+        }
+
+        try {
+          var lang = localStorage.getItem('portfolio-lang') || 'es';
+          var validLangs = ['es', 'en'];
+          if (!validLangs.includes(lang)) lang = 'es';
+          document.documentElement.setAttribute('data-lang', lang);
+          document.documentElement.setAttribute('lang', lang);
+        } catch (e) {
+          document.documentElement.setAttribute('data-lang', 'es');
+        }
+      })();
+    </script>
+  </head>
+
+  <body>
+    <slot />
+
+    <!-- Scroll reveal observer -->
+    <script>
+      (function initScrollReveal() {
+        try {
+          var elements = document.querySelectorAll('.reveal');
+          if (!elements.length) return;
+
+          var observer = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add('is-visible');
+                  // Unobserve after reveal to save resources
+                  observer.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+          );
+
+          elements.forEach(function (el) {
+            observer.observe(el);
+          });
+        } catch (e) {
+          // Fallback: reveal all immediately if IntersectionObserver fails
+          console.warn('[Portfolio] Scroll reveal unavailable, showing all elements:', e.message);
+          try {
+            document.querySelectorAll('.reveal').forEach(function (el) {
+              el.classList.add('is-visible');
+            });
+          } catch (fallbackErr) {
+            console.error('[Portfolio] Fallback reveal also failed:', fallbackErr);
+          }
+        }
+      })();
+    </script>
+
+    <!-- Active nav section tracker -->
+    <script>
+      (function initNavTracker() {
+        try {
+          var sections = document.querySelectorAll('section[id]');
+          var navLinks = document.querySelectorAll('.nav-link[data-target]');
+          if (!sections.length || !navLinks.length) return;
+
+          var observer = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                  navLinks.forEach(function (link) {
+                    link.classList.remove('is-active');
+                  });
+                  var active = document.querySelector(
+                    '.nav-link[data-target="' + entry.target.id + '"]'
+                  );
+                  if (active) active.classList.add('is-active');
+                }
+              });
+            },
+            { rootMargin: '-45% 0px -45% 0px' }
+          );
+
+          sections.forEach(function (section) {
+            observer.observe(section);
+          });
+        } catch (e) {
+          console.warn('[Portfolio] Nav tracker unavailable:', e.message);
+        }
+      })();
+    </script>
+  </body>
+</html>

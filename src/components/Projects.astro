@@ -1,0 +1,390 @@
+---
+// Projects.astro — Projects section
+---
+
+<section id="projects" class="projects-section">
+  <div class="projects-container">
+
+    <!-- Section heading -->
+    <div class="projects-heading reveal">
+      <h2 class="section-heading" style="text-align:center;">
+        <span class="i18n-es">Proyectos</span>
+        <span class="i18n-en">Projects</span>
+      </h2>
+      <div class="section-underline" style="margin:0 auto 0.75rem;"></div>
+      <p class="projects-subtitle">
+        <span class="i18n-es">Algunos de mis proyectos destacados que demuestran mis habilidades y experiencia</span>
+        <span class="i18n-en">Some of my featured projects showcasing my skills and experience</span>
+      </p>
+    </div>
+
+    <!-- ─── MAIN PROJECTS ─── -->
+    <div class="projects-block reveal reveal-delay-1">
+      <h3 class="block-title">
+        <span class="i18n-es">Proyectos Principales</span>
+        <span class="i18n-en">Main Projects</span>
+      </h3>
+      <p class="block-subtitle">
+        <span class="i18n-es">Proyectos personales donde muestro arquitectura y decisiones técnicas end-to-end.</span>
+        <span class="i18n-en">Personal projects showing architecture and end-to-end technical decisions.</span>
+      </p>
+
+      <!-- TFG — FEATURED CARD -->
+      <div class="card-featured tfg-card" id="tfg-project">
+        <div class="tfg-header">
+          <div class="tfg-badges">
+            <span class="badge-featured">⭐ <span class="i18n-es">Destacado</span><span class="i18n-en">Featured</span></span>
+            <span class="badge-grade">🏆 <span class="i18n-es">Nota Máxima 10/10</span><span class="i18n-en">Maximum Grade 10/10</span></span>
+          </div>
+
+          <div class="tfg-icon-wrap">
+            <a href="https://github.com/Cortes-Hash/TFG" target="_blank" rel="noopener noreferrer" class="tfg-icon" aria-label="Ver TFG en GitHub / View TFG on GitHub" title="GitHub — TFG">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <h4 class="tfg-title">
+          <span class="i18n-es">TFG — Plataforma E-Commerce con IA Integrada</span>
+          <span class="i18n-en">FDP — AI-Integrated E-Commerce Platform</span>
+        </h4>
+
+        <p class="tfg-desc">
+          <span class="i18n-es">
+            Aplicación web full-stack desarrollada como Trabajo de Fin de Grado. Integra
+            <strong>Gemini AI</strong> para recomendaciones inteligentes y análisis de datos,
+            <strong>Stripe</strong> como pasarela de pago segura, <strong>Spring Security</strong>
+            para autenticación y autorización robusta, y <strong>Thymeleaf</strong> para el
+            renderizado del servidor. Obtuvo la calificación máxima posible.
+          </span>
+          <span class="i18n-en">
+            Full-stack web application developed as a Final Degree Project. Integrates
+            <strong>Gemini AI</strong> for intelligent recommendations and data analysis,
+            <strong>Stripe</strong> as a secure payment gateway, <strong>Spring Security</strong>
+            for robust authentication and authorization, and <strong>Thymeleaf</strong> for
+            server-side rendering. Received the maximum possible grade.
+          </span>
+        </p>
+
+        <div class="tfg-stack">
+          <h5 class="stack-label">
+            <span class="i18n-es">Stack tecnológico:</span>
+            <span class="i18n-en">Tech stack:</span>
+          </h5>
+          <div class="tags-row">
+            {['Java', 'Spring Boot', 'Gemini AI', 'Stripe', 'Spring Security', 'Thymeleaf', 'HTML', 'CSS', 'JavaScript'].map(tag => (
+              <span class="tech-tag">{tag}</span>
+            ))}
+          </div>
+        </div>
+
+        <div class="tfg-footer">
+          <a href="https://github.com/Cortes-Hash/TFG" target="_blank" rel="noopener noreferrer" class="tfg-confidential" style="text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;">
+              <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+            </svg>
+            <span class="i18n-es">Código fuente disponible en GitHub</span>
+            <span class="i18n-en">Source code available on GitHub</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── COMPANY PROJECTS ─── -->
+    <div class="projects-block reveal reveal-delay-2" id="company-projects">
+      <div class="company-header">
+        <h3 class="block-title">
+          <span class="i18n-es">Proyectos en Empresa</span>
+          <span class="i18n-en">Company Projects</span>
+        </h3>
+        <p class="block-subtitle">
+          <span class="i18n-es">Participaciones en entornos corporativos con foco en impacto real y colaboración con equipos multidisciplinares.</span>
+          <span class="i18n-en">Corporate work focused on real impact and collaboration with multidisciplinary teams.</span>
+        </p>
+      </div>
+
+      <div class="company-list">
+
+        <!-- Company project 1: Claude AI Automation -->
+        <article class="company-item" id="project-claude-ai">
+          <div class="company-icon" aria-hidden="true">🤖</div>
+          <div class="company-content">
+            <h4 class="company-title">
+              <span class="i18n-es">Automatización Corporativa — Claude AI</span>
+              <span class="i18n-en">Corporate Automation — Claude AI</span>
+            </h4>
+            <p class="company-desc">
+              <span class="i18n-es">
+                Sistema de automatización empresarial con <strong>Claude AI Skills</strong>
+                para la generación automática de vlogs corporativos y la creación de
+                <strong>dashboards interactivos</strong> que permiten a los clientes explorar
+                sus datos de forma visual e intuitiva en tiempo real.
+              </span>
+              <span class="i18n-en">
+                Enterprise automation system using <strong>Claude AI Skills</strong> for
+                automatic corporate vlog generation and <strong>interactive dashboards</strong>
+                that allow clients to explore their data visually and intuitively in real time.
+              </span>
+            </p>
+            <div class="tags-row">
+              {['Claude AI Skills', 'Automatización', 'Backend', 'HTML', 'CSS', 'JavaScript'].map(tag => (
+                <span class="tech-tag">{tag}</span>
+              ))}
+            </div>
+          </div>
+        </article>
+
+        <!-- Company project 2: Google Sheets Dashboard -->
+        <article class="company-item" id="project-sheets-dashboard">
+          <div class="company-icon" aria-hidden="true">📊</div>
+          <div class="company-content">
+            <h4 class="company-title">
+              <span class="i18n-es">Dashboard Inteligente — Google Sheets</span>
+              <span class="i18n-en">Smart Dashboard — Google Sheets</span>
+            </h4>
+            <p class="company-desc">
+              <span class="i18n-es">
+                Aplicación en <strong>AppScript / Google Sheets</strong> para consolidar leads
+                de múltiples fuentes de contacto. Sistema de filtrado sin duplicados, tablas
+                resumen y representación visual de datos con filtros dinámicos por
+                <strong>año, mes, canal e industria</strong> que actualizan los gráficos en
+                tiempo real. Organización automatizada mediante código Python vía AppScript.
+              </span>
+              <span class="i18n-en">
+                <strong>AppScript / Google Sheets</strong> application for consolidating leads
+                from multiple contact sources. Deduplication filtering, summary tables, and
+                visual data representation with dynamic filters by
+                <strong>year, month, channel, and industry</strong> that update charts in real
+                time. Automated organization via Python code through AppScript.
+              </span>
+            </p>
+            <div class="tags-row">
+              {['AppScript', 'Python', 'Google Sheets', 'Data Viz', 'Excel'].map(tag => (
+                <span class="tech-tag">{tag}</span>
+              ))}
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <p class="confidential-note">
+        🔒 <span class="i18n-es">Por confidencialidad, se muestran sin enlaces públicos ni detalles sensibles.</span>
+           <span class="i18n-en">For confidentiality, no public links or sensitive details are shown.</span>
+      </p>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator" aria-hidden="true">
+      <div class="scroll-dot"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects-section {
+    position: relative;
+    padding: 5rem 0;
+    background: var(--bg-primary);
+  }
+
+  .projects-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .projects-heading {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+
+  .projects-subtitle {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .projects-block {
+    margin-bottom: 3.5rem;
+  }
+
+  .block-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 0.35rem;
+  }
+
+  .block-subtitle {
+    font-size: 0.9rem;
+    color: var(--accent);
+    margin: 0 0 1.75rem;
+    font-weight: 500;
+  }
+
+  /* TFG Featured Card */
+  .tfg-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .tfg-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .tfg-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tfg-icon-wrap {
+    flex-shrink: 0;
+  }
+
+  .tfg-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 0.75rem;
+    background: linear-gradient(135deg, rgba(212,163,115,0.15), rgba(212,163,115,0.05));
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    text-decoration: none;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .tfg-icon:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--accent-glow);
+  }
+
+  .tfg-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+  }
+
+  .tfg-desc {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.75;
+    margin: 0;
+  }
+
+  .tfg-desc strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  .tfg-stack {}
+
+  .stack-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 0 0 0.65rem;
+  }
+
+  .tfg-footer {
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .tfg-confidential {
+    font-size: 0.82rem;
+    color: var(--accent);
+    font-weight: 500;
+    text-decoration: none;
+    transition: opacity 0.3s;
+  }
+
+  .tfg-confidential:hover {
+    opacity: 0.8;
+  }
+
+  /* Tags row */
+  .tags-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  /* Company items */
+  .company-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .company-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .company-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+  }
+
+  .company-desc {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .company-desc strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  .confidential-note {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin: 0.75rem 0 0;
+    padding: 0.75rem 1rem;
+    border-left: 2px solid var(--border);
+  }
+
+  /* Company block container */
+  #company-projects {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 2rem;
+  }
+
+  .company-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  @media (max-width: 640px) {
+    .tfg-header { flex-direction: column-reverse; }
+    .tfg-icon { width: 44px; height: 44px; font-size: 1.4rem; }
+    .company-item { grid-template-columns: 1fr; }
+    .company-icon { display: none; }
+  }
+</style>
